@@ -1,0 +1,17 @@
+-1) C D --> C
++2) D
++3) D
+-4) B --> B F
++5) D
+-6) C --> A
+-7) A D --> have to open question more clear
+-8) B E --> E
++9) G
++10) B
+-11) A B E F H --> A F H
++12) A C D E F
+-13) C D --> have to open question more clear
++14) A
+-15) F --> have to open question more clear
++16) F
+-17) C E --> have to open question more clear

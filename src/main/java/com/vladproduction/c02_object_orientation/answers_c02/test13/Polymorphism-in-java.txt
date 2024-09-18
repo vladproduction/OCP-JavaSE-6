@@ -1,0 +1,66 @@
+Polymorphism is only for instance methods?
+
+No, polymorphism in Java applies to both: 
+1)instance methods;
+2)method overloading.
+
+Here's how polymorphism works with each:
+---1. Instance Methods (Method Overriding):--------------------------------------------------------
+
+
+This is the most common form of polymorphism.
+It allows subclasses to override methods inherited from the parent class, providing specialized implementations.
+At runtime, based on the actual object's type (determined through dynamic dispatch), the appropriate method is called.
+Example:
+
+Java
+class Animal {
+  public String makeSound() {
+    return "generic sound";
+  }
+}
+
+class Dog extends Animal {
+  @Override // Optional annotation to indicate overriding
+  public String makeSound() {
+    return "woof";
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Animal animal = new Dog(); // Polymorphism in action
+    System.out.println(animal.makeSound()); // Prints "woof" (Dog's implementation)
+  }
+}
+---2. Method Overloading:--------------------------------------------------------
+
+
+This allows defining multiple methods with the same name but different parameter lists (number, types, or order) within the same class.
+The compiler determines which overloaded method to call based on the arguments provided at the call site.
+Example:
+
+Java
+class Calculator {
+  public int add(int a, int b) {
+    return a + b;
+  }
+
+  public double add(double a, double b) {
+    return a + b;
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Calculator calc = new Calculator();
+    System.out.println(calc.add(5, 3)); // Calls int add()
+    System.out.println(calc.add(2.5, 1.8)); // Calls double add()
+  }
+}
+-----------------------------------------------------------
+In both cases, polymorphism allows for a single method name to have different behaviors depending on the context. 
+However, they differ in terms of inheritance and when the selection happens:
+
+Method overriding involves inheritance and the selection happens at runtime based on the actual object's type.
+Method overloading doesn't involve inheritance and the selection happens at compile time based on the arguments provided.

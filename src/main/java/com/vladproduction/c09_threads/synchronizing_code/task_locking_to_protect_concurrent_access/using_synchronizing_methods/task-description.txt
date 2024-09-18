@@ -1,0 +1,18 @@
+Given a scenario, write code that makes appropriate use of object locking to
+protect static or instance variables from concurrent access problems.
+
+In Java, when multiple threads access shared resources (like static or instance variables), it can lead to concurrent access problems,
+such as data inconsistency or race conditions. To prevent these issues, you can use object locking through synchronization.
+Here’s how you can implement it:
+
+Scenario
+Suppose we have a simple bank account class where multiple threads can deposit and withdraw money.
+We need to ensure that the balance of the account is updated safely when accessed concurrently.
+
+Benefits of Object Locking:
+Thread Safety: Using synchronized ensures that the balance is not modified by multiple threads at once, avoiding inconsistent states.
+Atomicity: Deposits and withdrawals are atomic operations, meaning they complete fully or not at all.
+
+Note: While synchronized methods provide a straightforward way to implement locking, for highly concurrent applications,
+consider using Java's higher-level concurrency constructs in java.util.concurrent,
+such as ReentrantLock, ReadWriteLock, or atomic variables, to achieve better performance and flexibility.

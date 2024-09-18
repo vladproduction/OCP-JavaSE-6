@@ -1,0 +1,33 @@
+Here’s a Java program that demonstrates various types of loops, including for, enhanced for (for-each), do, and while,
+as well as the use of labels, break, and continue.
+Each section of the code is followed by explanations regarding the loop counter variable values during and after execution.
+
+Explanation of Loop Counter Variables:
+
+For Loop (for (int i = 0; i < 5; i++)):
+During Execution: i takes values from 0 to 4. It increments by 1 at the end of each iteration.
+After Execution: i is 5 after the loop ends because the loop exits when the condition is no longer true.
+
+Enhanced For Loop (for (int num : numbers)):
+During Execution: num takes the values 1, 2, 3, 4, 5 during each iteration. There is no counter variable after the loop as it's scoped within the loop.
+After Execution: No counter value is available as num is not accessible outside the loop.
+
+While Loop (while (j < 5)):
+During Execution: j takes values 0 to 4. It increments by 1 after each printed value.
+After Execution: j is 5 after exiting the loop because the loop condition is checked at the start of each iteration.
+
+Do-While Loop (do { ... } while (k < 5)):
+During Execution: k takes values 0 to 4. It increments after every iteration. The do-while will always execute at least once.
+After Execution: k is 5, as the check occurs after the body of the loop.
+
+Labelled Break (outerLoop):
+During Execution: The outer loop runs with a and the inner loop runs with b. The inner loop will stop when b equals 1, breaking out of both loops.
+After Execution: Only the last value of a is incremented to 3 due to the loop limits, as the outer loop was interrupted early.
+
+Labelled Continue (outerContinueLoop):
+During Execution: When y equals 1, the continue statement skips the current iteration of the outer loop, effectively moving on to the next value of x.
+After Execution: The final value of x is 3 because the loop completes all iterations.
+
+Conclusion:
+This program showcases all loop forms in Java, utilizing distinct constructs for different programming scenarios while explaining how loop counter
+variables behave during and after execution.

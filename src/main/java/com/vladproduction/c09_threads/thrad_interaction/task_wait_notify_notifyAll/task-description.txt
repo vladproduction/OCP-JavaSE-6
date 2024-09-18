@@ -1,0 +1,31 @@
+Task: building code that makes appropriate use of wait, notify and notifyAll methods;
+
+Approach: The wait(), notify(), and notifyAll() methods are essential for inter-thread communication in Java.
+They are used to make threads communicate with each other when certain conditions are met.
+
+Scenario:
+Let's create a simple producer-consumer scenario where a producer thread produces items and a consumer thread consumes
+them from a shared queue. The consumer waits for items to be available, and the producer notifies the consumer when new items are produced.
+
+//---------classes:----------
+
+SharedQueue Class:
+This class contains a Queue to hold the items produced and consumed.
+The produce method adds an item to the queue if there’s space. If the queue is full, it waits until space is available, invoking the wait() method.
+The consume method removes an item from the queue if it’s not empty. If the queue is empty, it waits until an item is produced.
+
+Producer Class:
+The Producer thread generates items (in this case, integers) and calls the produce() method of the SharedQueue.
+
+Consumer Class:
+The Consumer thread consumes items from the SharedQueue using the consume() method.
+
+Main Class:
+The WaitNotifyExample class creates a shared queue, starts both the producer and consumer threads, and waits for their completion with the join() method.
+
+//------------concepts:----------
+
+Synchronization: The synchronized keyword ensures that only one thread can access the methods of `SharedQueue at a time.
+Wait and Notify: The wait() method releases the lock on the SharedQueue object and causes the thread to wait until another thread
+invokes notify() or notifyAll().
+The notifyAll() method wakes up all waiting threads, allowing them to check the condition again.

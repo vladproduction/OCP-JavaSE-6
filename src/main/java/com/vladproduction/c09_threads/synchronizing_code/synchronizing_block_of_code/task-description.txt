@@ -1,0 +1,24 @@
+Synchronizing a Block of Code
+In this exercise we will attempt to synchronize a block of code. Within that block of
+code we will get the lock on an object, so that other threads cannot modify it while
+the block of code is executing. We will be creating three threads that will all attempt
+to manipulate the same object. Each thread will output a single letter 100 times, and
+then increment that letter by one. The object we will be using is StringBuffer.
+We could synchronize on a String object, but strings cannot be modified once
+they are created, so we would not be able to increment the letter without generating
+a new String object. The final output should have 100 As, 100 Bs, and 100 Cs all in
+unbroken lines.
+
+task flow:
+ 1. Create a class and extend the Thread class.
+ 2. Override the run() method of Thread. This is where the synchronized
+ block of code will go.
+ 3. For our three thread objects to share the same object, we will need to create
+ a constructor that accepts a StringBuffer object in the argument.
+ 4. The synchronized block of code will obtain a lock on the StringBuffer
+ object from step 3.
+ 5. Within the block, output the StringBuffer 100 times and then increment
+ the letter in the StringBuffer. You can check Chapter 6 for StringBuffer
+ methods that will help with this.
+ 6. Finally, in the main() method, create a single StringBuffer object using the
+ letter A, then create three instances of our class and start all three of them.

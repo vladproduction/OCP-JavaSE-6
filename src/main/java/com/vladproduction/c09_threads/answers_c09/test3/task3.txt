@@ -1,0 +1,29 @@
+3. Given:
+ 3. class Test {
+ 4. public static void main(String [] args) {
+ 5. printAll(args);
+ 6. }
+ 7. public static void printAll(String[] lines) {
+ 8. for(int i=0;i<lines.length;i++){
+ 9. System.out.println(lines[i]);
+10. Thread.currentThread().sleep(1000);
+11. }
+12. }
+13. }
+ The static method Thread.currentThread() returns a reference to the currently executing
+Thread object. What is the result of this code?
+ A. Each String in the array lines will output, with a 1-second pause between lines
+ B. Each String in the array lines will output, with no pause in between because this method
+is not executed in a Thread
+ C. Each String in the array lines will output, and there is no guarantee there will be a pause
+because currentThread() may not retrieve this thread
+ +D. This code will not compile
+ E. Each String in the lines array will print, with at least a one-second pause between lines
+
+ Answer:
+   ✓ D is correct. The sleep() method must be enclosed in a try/catch block, or the method
+ printAll() must declare it throws the InterruptedException.
+   E is incorrect, but it would be correct if the InterruptedException was dealt with (A is
+ too precise). B is incorrect (even if the InterruptedException was dealt with) because
+ all Java code, including the main() method, runs in threads. C is incorrect. The sleep()
+ method is static, it always affects the currently executing thread. (Objective 4.2)

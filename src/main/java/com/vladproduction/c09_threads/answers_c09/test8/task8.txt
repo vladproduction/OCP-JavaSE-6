@@ -1,0 +1,64 @@
+8. Given the scenario: This class is intended to allow users to write a series of messages, so that
+each message is identified with a timestamp and the name of the thread that wrote the message:
+public class Logger {
+ private StringBuilder contents = new StringBuilder();
+ public void log(String message) {
+ contents.append(System.currentTimeMillis());
+ contents.append(": ");
+ contents.append(Thread.currentThread().getName());
+ contents.append(message);
+ contents.append("\n");
+ }
+ public String getContents() { return contents.toString(); }
+}
+ How can we ensure that instances of this class can be safely used by multiple threads?
+ A. This class is already thread-safe
+ B. Replacing StringBuilder with StringBuffer will make this class thread-safe
+ +C. Synchronize the log() method only
+ D. Synchronize the getContents() method only
+ +E. Synchronize both log() and getContents()
+ F. This class cannot be made thread-safe
+
+//-----------------------------------
+
+Evaluation of Each Option
+A. This class is already thread-safe.
+False. The Logger class is not thread-safe. Since multiple threads can call the log() method simultaneously, they can interfere
+with each other while modifying the contents StringBuilder, potentially leading to data corruption.
+
+B. Replacing StringBuilder with StringBuffer will make this class thread-safe.
+Partially True, but Misleading. While StringBuffer is synchronized and thus thread-safe for individual method calls (e.g., append operations),
+using it alone does not ensure that the entire log() method is thread-safe. If multiple threads call log() simultaneously, there is still a
+risk of inconsistent access to the contents when reading or writing. Therefore, this approach is not sufficient to ensure complete thread
+safety without additional synchronization.
+
+C. Synchronize the log() method only.
+True, but Incomplete. Synchronizing the log() method will ensure that only one thread at a time can write to contents, making writes safe,
+but it does not protect the getContents() method. If one thread calls getContents() while another is writing, it can lead to inconsistent
+results or a corrupted view of contents.
+
+D. Synchronize the getContents() method only.
+False. Synchronizing only the getContents() method does not make writing to contents safe, allowing potential interference during logging.
+
++E. Synchronize both log() and getContents().
+True. Synchronizing both methods ensures that the writing and reading processes are mutually exclusive. If one thread is logging a message,
+another thread cannot read the contents, and vice versa, which maintains data integrity.
+
+F. This class cannot be made thread-safe.
+False. The class can be made thread-safe by synchronizing the relevant methods appropriately.
+
+Conclusion
+The correct answers to ensure that instances of this Logger class can be safely used by multiple threads are:
+C. Synchronize the log() method only. (although it doesn't address reading)
+E. Synchronize both log() and getContents().
+B is not a complete solution, and while it's true that replacing StringBuilder with StringBuffer helps with thread safety, it's not
+sufficient by itself to ensure the overall safety of the Logger class. So, answers C and E are correct.
+
+Answer:
+  ✓ E is correct. Synchronizing the public methods is sufficient to make this safe, so F is false.
+This class is not thread-safe unless some sort of synchronization protects the changing data.
+  B is not correct because although a StringBuffer is synchonized internally, we call
+append() multiple times, and nothing would prevent two simultaneous log() calls from mixing up their messages.
+C and D are not correct because if one method remains unsynchronized, it can run while the other is executing, which could result in reading the contents
+while one of the messages is incomplete, or worse. (You don't want to call getString() on
+the StringBuffer as it's resizing its internal character array.) (Objective 4.3)

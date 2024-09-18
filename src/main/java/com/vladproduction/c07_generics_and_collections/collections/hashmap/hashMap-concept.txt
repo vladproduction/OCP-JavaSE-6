@@ -1,0 +1,9 @@
+HashMap Behavior:
+
+A HashMap uses both the hashCode and equals methods to store and retrieve keys.
+When you put an object into the map, it calculates the hash code and uses that to determine where to store the object in the underlying array.
+When you retrieve an object using get(),
+it again calculates the hash code and looks in the specific bucket where the key should be,
+then it checks each object in that bucket for equality using the equals() method.
+
+default hashCode() method from Object, which usually returns a unique identifier based on the object's memory address.

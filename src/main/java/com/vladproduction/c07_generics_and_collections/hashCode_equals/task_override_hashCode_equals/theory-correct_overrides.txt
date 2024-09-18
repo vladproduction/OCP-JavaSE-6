@@ -1,0 +1,34 @@
+1)=====Correct Overrides of hashCode() and equals():
+
+*Consistency:
+If two objects are considered equal according to the equals() method, they must have the same hashCode().
+If they are unequal, they can have different hash codes, but if they are equal, their hash codes must match.
+
+*Symmetry:
+For any two objects, a and b, if a.equals(b) returns true, then b.equals(a) must return true.
+
+*Transitivity:
+For any three objects, if a.equals(b) is true, and b.equals(c) is true, then a.equals(c) must also return true.
+
+*Reflexivity:
+For any non-null reference value a, a.equals(a) must return true.
+
+*Non-nullity:
+For any object reference a, a.equals(null) should return false.
+
+
+2)=====Difference Between == and equals():
+
+== Operator:
+This operator checks for reference equality, meaning it checks whether two references point to the same object in memory.
+If a == b is true, it means a and b are actually the same object.
+
+equals() Method:
+This method checks for logical equality (based on the class's definition of equality).
+It is used to compare the content of objects rather than their memory addresses.
+The equals() method can be overridden to define what it means for two instances of a class to be considered equal,
+which could be based on one or more fields of the object.
+
+Conclusion:
+implementing hashCode() and equals(), careful attention to the contract between the two is essential,
+and understanding the difference between reference equality (==) and logical equality (equals());

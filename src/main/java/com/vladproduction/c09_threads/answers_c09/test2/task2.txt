@@ -1,0 +1,27 @@
+2. Given:
+ 3. class MyThread extends Thread {
+ 4. public static void main(String [] args) {
+ 5. MyThread t = new MyThread();
+ 6. Thread x = new Thread(t);
+ 7. x.start();
+ 8. }
+ 9. public void run() {
+10. for(int i=0;i<3;++i) {
+11. System.out.print(i + "..");
+12. }
+13. }
+14. }
+ What is the result of this code?
+ A. Compilation fails
+ B. 1..2..3..
+ C. 0..1..2..3..
+ +D. 0..1..2..
+ E. An exception occurs at runtime
+
+ Answer:
+   ✓ D is correct. The thread MyThread will start and loop three times (from 0 to 2).
+   A is incorrect because the Thread class implements the Runnable interface; therefore,
+ in line 5, Thread can take an object of type Thread as an argument in the constructor
+ (this is NOT recommended). B and C are incorrect because the variable i in the for
+ loop starts with a value of 0 and ends with a value of 2. E is incorrect based on the above.
+ (Objective 4.1)

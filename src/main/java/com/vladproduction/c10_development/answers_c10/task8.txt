@@ -1,0 +1,26 @@
+8. Given:
+ 3. import java.util.*;
+ 4. public class Values {
+ 5. public static void main(String[] args) {
+ 6. Properties p = System.getProperties();
+ 7. p.setProperty("myProp", "myValue");
+ 8. System.out.print(p.getProperty("cmdProp") + " ");
+ 9. System.out.print(p.getProperty("myProp") + " ");
+10. System.out.print(p.getProperty("noProp") + " ");
+11. p.setProperty("cmdProp", "newValue");
+12. System.out.println(p.getProperty("cmdProp"));
+13. }
+14. }
+And given the command line invocation:
+java -DcmdProp=cmdValue Values
+ What is the result?
+ A. null myValue null null
+ B. cmdValue null null cmdValue
+ C. cmdValue null null newValue
+ D. cmdValue myValue null cmdValue
+ E. cmdValue myValue null newValue
+ F. An exception is thrown at runtime
+Answer:
+  ✓ E is correct. System properties can be set at the command line, as indicated correctly in
+the example. System properties can also be set and overridden programmatically.
+  A, B, C, D, and F are incorrect based on the above. (Objective 7.2)

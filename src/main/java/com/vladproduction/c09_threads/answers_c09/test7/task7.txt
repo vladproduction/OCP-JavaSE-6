@@ -1,0 +1,52 @@
+7. Which are true? (Choose all that apply.)
+ +A. The notifyAll() method must be called from a synchronized context
+ B. To call wait(), an object must own the lock on the thread
+ C. The notify() method is defined in class java.lang.Thread
+ +D. When a thread is waiting as a result of wait(), it releases its lock
+ E. The notify() method causes a thread to immediately release its lock
+ F. The difference between notify() and notifyAll() is that notifyAll() notifies all
+waiting threads, regardless of the object they're waiting on
+
+Evaluating Each Statement
+A. The notifyAll() method must be called from a synchronized context.
+True.
+Both notify() and notifyAll() methods must be called from within a synchronized block or method.
+This ensures that the calling thread holds the monitor (lock) of the object on which these methods are called.
+
+B. To call wait(), an object must own the lock on the thread.
+False.
+To call wait(), the calling thread must hold the lock on the object it's calling wait() on.
+So, the condition is about holding the lock on the object, not the thread itself. This means the thread does not own the lock;
+it just needs the lock on the specific object it is waiting on.
+
+C. The notify() method is defined in class java.lang.Thread.
+False.
+The notify() and notifyAll() methods are actually defined in the java.lang.Object class, not java.lang.Thread.
+All objects in Java have these methods as part of their intrinsic behavior, so they are used with any object as the monitor.
+
+D. When a thread is waiting as a result of wait(), it releases its lock.
+True.
+When a thread calls wait(), it releases the lock it holds on the object it is waiting on. This allows other threads to acquire
+the lock on that object while the waiting thread is in the waiting state.
+
+E. The notify() method causes a thread to immediately release its lock.
+False.
+Calling notify() does not cause the thread that calls it to release its lock immediately.
+The lock is only released after the synchronized block or method completes. The thread that is notified will only be able
+to proceed once it reacquires the lock after it is released by the notifying thread.
+
+F. The difference between notify() and notifyAll() is that notifyAll() notifies all waiting threads, regardless of the object they're waiting on.
+False.
+While it's true that notifyAll() notifies all waiting threads, it only does so for those that are waiting on the same object that notifyAll() is called on.
+Threads waiting on different objects will not be affected by that notifyAll() call.
+
+Answer:
+  ✓ A is correct because notifyAll() (and wait() and notify()) must be called from within
+a synchronized context. D is a correct statement.
+  B is incorrect because to call wait(), the thread must own the lock on the object that
+wait() is being invoked on, not the other way around. C is wrong because notify() is
+defined in java.lang.Object. E is wrong because notify() will not cause a thread to
+release its locks. The thread can only release its locks by exiting the synchronized code. F is
+wrong because notifyAll() notifies all the threads waiting on a particular locked object,
+not all threads waiting on any object. (Objective 4.4)
+

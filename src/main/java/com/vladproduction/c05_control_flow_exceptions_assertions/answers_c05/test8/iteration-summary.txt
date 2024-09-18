@@ -1,0 +1,40 @@
+Summary of Each Iteration
+Before Loop Starts
+Initial Value of x: 7
+Static Block Execution: x becomes 8.
+Iteration Details
+First Iteration (y = 0):
+
+Start of Loop:
+x++ → x becomes 9.
+Switch Statement:
+        case 8:: (does not execute, as x is 9)
+        case 9:: Executes, s becomes "9 ".
+        case 10:: Executes, s becomes "9 10 ". (Then hits break, exits switch)
+End of First Iteration:
+Value of x: 9
+Value of s: "9 10 "
+Second Iteration (y = 1):
+
+Start of Loop:
+x++ → x becomes 10.
+Switch Statement:
+        case 8:: (does not execute, as x is 10)
+        case 9:: (does not execute, as x is 10)
+        case 10:: Executes, s becomes "9 10 10 ". (Then hits break, exits switch)
+End of Second Iteration:
+Value of x: 10
+Value of s: "9 10 10 "
+Third Iteration (y = 2):
+
+Start of Loop:
+x++ → x becomes 11.
+Switch Statement:
+        case 8:: (does not execute, as x is 11)
+        case 9:: (does not execute, as x is 11)
+        case 10:: (does not execute, as x is 11)
+default:: Executes, s becomes "9 10 10 d ".
+        case 13:: Executes, s becomes "9 10 10 d 13 ".
+End of Third Iteration:
+Value of x: 11
+Value of s: "9 10 10 d 13 "

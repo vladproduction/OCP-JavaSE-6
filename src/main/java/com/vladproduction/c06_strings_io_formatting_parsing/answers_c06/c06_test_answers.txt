@@ -1,0 +1,17 @@
++1) E
++2) C
++3) B C D
++4) A
++5) variant#1 and variant#2
++6)DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.GERMAN);
+  String formatted = df.format(new Date(1119280000000L));
+  System.out.println(formatted); // Output: 20. Juni 2005
++7) A B
+-8) C F ?  why the last printed value is 10 but not 9?
++9) D F
++10) E
++11) D
++12) A B
++13) D F G
++14) B
++15) F

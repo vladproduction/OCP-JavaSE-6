@@ -1,0 +1,11 @@
+Which of the following pairs of method invocations could NEVER be executing at the same time?
+(Choose all that apply.)
+ A. x.a() in thread1, and x.a() in thread2
+ B. x.a() in thread1, and x.b() in thread2
+ C. x.a() in thread1, and y.a() in thread2
+ D. x.a() in thread1, and y.b() in thread2
+ E. x.b() in thread1, and x.a() in thread2
+ F. x.b() in thread1, and x.b() in thread2
+ G. x.b() in thread1, and y.a() in thread2
+ H. x.b() in thread1, and y.b() in thread2
+

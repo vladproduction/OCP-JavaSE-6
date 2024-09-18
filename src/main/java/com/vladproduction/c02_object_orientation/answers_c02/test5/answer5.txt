@@ -1,0 +1,19 @@
+Which statement(s) are true? (Choose all that apply.)
+ A. Cohesion is the OO principle most closely associated with hiding implementation details
+ B. Cohesion is the OO principle most closely associated with making sure that classes know
+about other classes only through their APIs
+ C. Cohesion is the OO principle most closely associated with making sure that a class is
+designed with a single, well-focused purpose
+ D. Cohesion is the OO principle most closely associated with allowing a single object to be
+seen as having many types
+
+A. This is encapsulation, not cohesion.
+Cohesion focuses on a class's internal responsibility, while encapsulation deals with how a class controls access to its data and methods.
+
+B.  This is loose coupling, which is related to cohesion but distinct. Loose coupling aims to minimize dependencies between classes,
+while cohesion is about a class's internal focus.
+
+### C. This is TRUE. A highly cohesive class concentrates on a specific, well-defined set of functionalities.
+
+D. This is polymorphism, not cohesion.
+Polymorphism allows objects of different classes to respond to the same method call in different ways.

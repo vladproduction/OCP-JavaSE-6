@@ -1,0 +1,84 @@
+Let's build a more complex inventory management system using ReentrantLock where we can handle concurrent access to inventory items.
+We will implement features such as adding items, removing items, checking available stock, and handling potential deadlocks with tryLock().
+
+Features of the Inventory System:
+-Add Inventory: Add items to the inventory.
+-Remove Inventory: Remove items from the inventory if sufficient stock is available.
+-Check Stock: Check available stock for specific item IDs.
+-Locking Mechanism: Use ReentrantLock with tryLock() to manage concurrent access, trying to avoid deadlocks.
+-Thread-safety: Ensure that operations on the inventory are thread-safe.
+
+//---------
+Explanation of the Code
+
+Inventory Class:
+-Map<String, Integer> stock: Holds item IDs and their quantities.
+-ReentrantLock lock: Used to control access to the inventory data structure.
+    Methods:
+-addItem(String itemId, int quantity): Adds specified quantity of the item to the inventory. Locks the inventory for exclusive
+    access during the operation.
+-removeItem(String itemId, int quantity): Removes a specified quantity of the item from the inventory if stock allows. It also locks the inventory.
+-checkStock(String itemId): Returns the current stock of the specified item, locking the inventory during the read operation to ensure thread safety.
+
+InventoryOperation Class:
+Represents a runnable task that performs operations on the inventory. The operation (add, remove, or check) is specified as a parameter.
+
+Multi-threading and Execution:
+Multiple threads execute different inventory operations simultaneously to simulate concurrent access.
+Operations include adding new items, removing items with checks for sufficient stock, and checking the current stock of items.
+
+//----------
+Using tryLock()
+If you want to implement more advanced locking using tryLock(), you can modify the addItem() and removeItem() methods to use it.
+Here's how you can implement it:
+
+Updated Methods Using tryLock()
+
+//1)addItem
+public void addItem(String itemId, int quantity) {
+    if (lock.tryLock()) { // Try to acquire the lock
+        try {
+            stock.put(itemId, stock.getOrDefault(itemId, 0) + quantity);
+            System.out.printf("Added %d of item %s. New quantity: %d%n", quantity, itemId, stock.get(itemId));
+        } finally {
+            lock.unlock(); // Ensure lock is released
+        }
+    } else {
+        System.out.println("Could not acquire lock for adding item " + itemId);
+    }
+}
+
+//2)removeItem
+public boolean removeItem(String itemId, int quantity) {
+    if (lock.tryLock()) { // Try to acquire the lock
+        try {
+            if (stock.getOrDefault(itemId, 0) >= quantity) {
+                stock.put(itemId, stock.get(itemId) - quantity);
+                System.out.printf("Removed %d of item %s. Remaining quantity: %d%n", quantity, itemId, stock.get(itemId));
+                return true; // Successfully removed
+            } else {
+                System.out.println("Insufficient stock for item " + itemId);
+                return false; // Insufficient stock
+            }
+        } finally {
+            lock.unlock(); // Release the lock
+        }
+    } else {
+        System.out.println("Could not acquire lock for removing item " + itemId);
+        return false; // Lock could not be acquired
+    }
+}
+
+Benefits of Using tryLock():
+-Avoiding Deadlocks: tryLock() allows you to attempt to acquire a lock without blocking.
+This can be useful in avoiding deadlocks if multiple threads need to acquire multiple locks simultaneously.
+-Non-blocking Behavior: Instead of waiting indefinitely for a lock, threads can proceed or take alternative actions
+if a lock cannot be obtained, which increases system responsiveness.
+
+//---------
+Conclusion
+The above inventory system implementation showcases:
+-How to manage shared resources in a multithreading environment using ReentrantLock to ensure thread safety.
+-How to apply more complex locking mechanisms such as tryLock() to avoid blocking and potential deadlocks, creating a more robust application.
+-This code can be further extended to include more features like logging, error handling, user interfaces,
+or persistent storage for a complete inventory management solution.

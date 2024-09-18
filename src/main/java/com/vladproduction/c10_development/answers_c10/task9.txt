@@ -1,0 +1,36 @@
+ 9. Given the following directory structure:
+x-|
+  |- FindBaz.class
+  |
+  |- test-|
+          |- Baz.class
+          |
+          |- myApp-|
+                   |- Baz.class
+ And given the contents of the related .java files:
+ 1. public class FindBaz {
+ 2. public static void main(String[] args) { new Baz(); }
+ 3. }
+ In the test directory:
+ 1. public class Baz {
+ 2. static { System.out.println("test/Baz"); }
+ 3. }
+ In the myApp directory:
+  1. public class Baz {
+  2. static { System.out.println("myApp/Baz"); }
+  3. }
+  If the current directory is x, which invocations will produce the output "test/Baz"? (Choose
+ all that apply.)
+  A. java FindBaz
+  B. java -classpath test FindBaz
+  C. java -classpath .:test FindBaz
+  D. java -classpath .:test/myApp FindBaz
+  E. java -classpath test:test/myApp FindBaz
+  F. java -classpath test:test/myApp:. FindBaz
+  G. java -classpath test/myApp:test:. FindBaz
+ Answer:
+   ✓ C and F are correct. The java command must find both FindBaz and the version of
+ Baz located in the test directory. The "." finds FindBaz, and "test" must come before
+ "test/myApp" or java will find the other version of Baz. Remember the real exam will
+ default to using the Unix path separator.
+   A, B, D, E, and G are incorrect based on the above. (Objective 7.2)

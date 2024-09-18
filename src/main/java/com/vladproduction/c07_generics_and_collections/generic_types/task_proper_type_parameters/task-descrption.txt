@@ -1,0 +1,15 @@
+Develop code that makes proper use of type parameters in class/interface declarations,
+instance variables, method arguments, and return types; and write generic methods or
+methods that make use of wildcard types and understand the similarities and differences
+between these two approaches. Write code that uses the NavigableSet and NavigableMap
+interfaces.
+
+Solution description:
+* Using type parameters in generics for class and interface declarations,
+as well as method arguments and return types;
+* We'll also explore generic methods and wildcard types;
+* Finally, we’ll look at how to use the NavigableSet and NavigableMap interfaces in Java;
+
+Wildcards in Generics
+Wildcards (denoted by ?) are used in situations where you want to specify a flexible type.
+There are three types of wildcards: unbounded, bounded upper, and bounded lower.

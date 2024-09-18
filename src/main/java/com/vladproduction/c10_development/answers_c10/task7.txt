@@ -1,0 +1,26 @@
+7. Given:
+ 3. import java.util.*;
+ 4. public class Antique {
+ 5. public static void main(String[] args) {
+ 6. List<String> myList = new ArrayList<String>();
+ 7. assert (args.length > 0);
+  8. System.out.println("still static");
+  9. }
+ 10. }
+  Which sets of commands (javac followed by java) will compile and run without exception or
+ error? (Choose all that apply.)
+  A. javac Antique.java
+ java Antique
+  B. javac Antique.java
+ java -ea Antique
+  C. javac -source 6 Antique.java
+ java Antique
+  D. javac -source 1.4 Antique.java
+ java Antique
+  E. javac -source 1.6 Antique.java
+ java -ea Antique
+ Answer:
+   ✓ A and C are correct. If assertions (which were first available in Java 1.4) are enabled, an
+ AssertionError will be thrown at line 7.
+   D is incorrect because the code uses generics, and generics weren't introduced until Java 5.
+ B and E are incorrect based on the above. (Objective 7.2)

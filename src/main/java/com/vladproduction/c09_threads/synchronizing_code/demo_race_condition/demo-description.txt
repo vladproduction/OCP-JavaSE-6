@@ -1,0 +1,43 @@
+The logic in our code example is as follows:
+1. The Runnable object holds a reference to a single account.
+2. Two threads are started, representing Lucy and Fred, and each thread is
+given a reference to the same Runnable (which holds a reference to the
+actual account)
+3. The initial balance on the account is 50, and each withdrawal is exactly 10.
+4. In the run() method, we loop 5 times, and in each loop we
+■ Make a withdrawal (if there's enough in the account).
+■ Print a statement if the account is overdrawn (which it should never be,
+ since we check the balance before making a withdrawal).
+5. The makeWithdrawal() method in the test class (representing the behavior
+of Fred or Lucy) will do the following:
+■ Check the balance to see if there's enough for the withdrawal.
+■ If there is enough, print out the name of the one making the withdrawal.
+■ Go to sleep for 500 milliseconds—just long enough to give the other
+partner a chance to get in before you actually make the withdrawal.
+■ Upon waking up, complete the withdrawal and print that fact.
+■ If there wasn't enough in the first place, print a statement showing who you
+are and the fact that there wasn't enough.
+
+So what we're really trying to discover is if the following is possible: for one partner
+to check the account and see that there's enough, but before making the actual
+withdrawal, the other partner checks the account and also sees that there's enough.
+When the account balance gets to 10, if both partners check it before making the
+withdrawal, both will think it's OK to withdraw, and the account will overdraw by 10!
+
+//-------solution to preventing account overdraw:
+You can't guarantee that a single thread will stay running throughout the entire
+atomic operation. But you can guarantee that even if the thread running the atomic
+operation moves in and out of the running state, no other running thread will be
+able to act on the same data.
+So, to prevent race condition, we have to make checking balance and withdrawal methods never separated.
+And to protect data we must do two things:
+■ Mark the variables private.
+■ Synchronize the code that modifies the variables.
+We mark the makeWithdrawal() method synchronized as follows:
+private synchronized void makeWithdrawal(int amt) {...}
+
+    Now we've guaranteed that once a thread (Lucy or Fred) starts the withdrawal
+    process (by invoking makeWithdrawal()), the other thread cannot enter that
+    method until the first one completes the process by exiting the method.
+    Notice that now both threads, Lucy and Fred, always check the account balance
+    and complete the withdrawal before the other thread can check the balance.

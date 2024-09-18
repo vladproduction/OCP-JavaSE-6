@@ -1,0 +1,10 @@
+    Given a scenario:
+involving navigating file systems, reading from files, or writing to files;
+develop the correct solution using the following classes (sometimes in combination) from java.io:
++BufferedReader,
++BufferedWriter,
++File,
++FileReader,
++FileWriter,
++PrintWriter,
++Console.

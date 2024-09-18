@@ -1,0 +1,25 @@
++ 1) B, E
++ 2) E
++ 3) A
++/- 4) class AgedP {
+       AgedP() {
+       }
+       public AgedP(int x) {
+       }
+   }
+   class Kinder extends AgedP {
+       public Kinder(int x) {
+           super();
+       }
+   }
++ 5) C
++ 6) C
+- 7) (E - my); C - correct
++ 8) F
++ 9) A
++ 10) B
++ 11) C
++ 12) C
++ 13) A
++/- 14) (C - my) C, A - correct
++ 15) D

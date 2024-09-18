@@ -1,0 +1,20 @@
+Raiders of the Lost Ark/ACTION/Ford, Harrison/1981
+Patriot Games/ACTION/Ford, Harrison/1992
+Die Hard/ACTION/Willis Bruce/1988
+Mad Max: Fury Road/ACTION/Hardy Tom/2015
+Donnie Darko/SCIFI/Gyllenhall, Jake/2001
+Star Wars/SCIFI/Ford, Harrison/1977
+Blade Runner 2049/SCIFI/Gosling Ryan/2017
+Interstellar/SCIFI/McConaughey Matthew/2014
+Caddy Shack/COMEDY/Murray, Bill/1980
+Lost in Translation/COMEDY/Murray, Bill/2003
+The Big Lebowski/COMEDY/Bridges Jeff/1998
+Bridesmaids/COMEDY/Wiig Kristen/2011
+The Shawshank Redemption/DRAMA/Hanks Tom/1994
+12 Angry Men/DRAMA/Fonda Henry/1957
+The Shining/HORROR/Nicholson Jack/1980
+Get Out/HORROR/Peele Jordan/2017
+Casablanca/ROMANCE/Bogart Humphrey/1942
+La La Land/ROMANCE/Gosling Ryan/2016
+The Silence of the Lambs/THRILLER/Hopkins Anthony/1991
+Gone Girl/THRILLER/Fincher David/2014

@@ -1,0 +1,31 @@
+11. Given the following directory structure:
+test-|
+     |- GetJar.java
+     |
+     |- myApp-|
+              |-Foo.java
+ And given the contents of GetJar.java and Foo.java:
+ 3. public class GetJar {
+ 4. public static void main(String[] args) {
+ 5. System.out.println(myApp.Foo.d);
+ 6. }
+ 7. }
+ 3. package myApp;
+ 4. public class Foo { public static int d = 8; }
+ If the current directory is "test", and myApp/Foo.class is placed in a JAR file called MyJar.jar
+ located in test, which set(s) of commands will compile GetJar.java and produce the output 8?
+ (Choose all that apply.)
+  A. javac -classpath MyJar.jar GetJar.java
+ java GetJar
+  B. javac MyJar.jar GetJar.java
+ java GetJar
+  C. javac -classpath MyJar.jar GetJar.java
+ java -classpath MyJar.jar GetJar
+  D. javac MyJar.jar GetJar.java
+ java -classpath MyJar.jar GetJar
+ Answer:
+   ✓ A is correct. Given the current directory and where the necessary files are located, these
+ are the correct command line statements.
+   B and D are wrong because javac MyJar.jar GetJar.java is incorrect syntax. C is wrong
+ because the -classpath MyJar.java in the java invocation does not include the test directory.
+ (Objective 7.5)

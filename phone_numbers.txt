@@ -1,0 +1,4 @@
+Call me at 1234567 or 123 4567 or 123-4567.
+This number is invalid: 1234-567.
+You can also reach me at 9876543.
+And this is mine other contacts as well: 444-5555, 555-5555

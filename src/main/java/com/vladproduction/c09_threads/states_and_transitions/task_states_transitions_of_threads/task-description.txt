@@ -1,0 +1,30 @@
+Recognize the states in which a thread can exist, and identify ways in which a thread
+can transition from one state to another.
+
+In Java, a thread can exist in several states defined by the Thread.State enum. The states are:
+
+NEW: The thread is created but not yet started.
+RUNNABLE: The thread is ready to run and waiting for CPU time. This state encompasses both running and ready states.
+BLOCKED: The thread is waiting to acquire a lock that another thread holds.
+WAITING: The thread is waiting indefinitely for another thread to perform a particular action.
+TIMED_WAITING: The thread is waiting for another thread to perform an action for up to a specified waiting time.
+TERMINATED: The thread has completed its execution.
+
+State Transitions
+A thread can transition between these states in various ways:
+
+NEW to RUNNABLE: When start() is called on the thread instance.
+RUNNABLE to BLOCKED: When a thread tries to acquire a lock that is held by another thread.
+RUNNABLE to WAITING: When a thread calls methods like Object.wait(), Thread.join(), or LockSupport.park().
+RUNNABLE to TIMED_WAITING: When a thread calls methods like Thread.sleep(millis), Object.wait(millis), or Thread.join(millis).
+WAITING or TIMED_WAITING to RUNNABLE: When the waiting condition is met (for example, another thread notifies or interrupts the waiting thread).
+RUNNABLE to TERMINATED: When the thread's run() method completes.
+
+//---------
+Explanation:
+We create a SampleThread class that extends Thread and overrides the run method.
+Inside run, we put the thread to sleep (transitioning to TIMED_WAITING state) for 2 seconds.
+We then call wait() on the thread which puts it in the WAITING state.
+The main method starts the thread and checks its state at various points.
+We use notify() to wake the thread from waiting before it exits.
+This example demonstrates the transitions between different states as a thread runs.

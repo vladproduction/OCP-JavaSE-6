@@ -1,0 +1,93 @@
+-create class FileManager and main() inside;
+-create Console class instance as one of the task requirement;
+-import java.io.Console; have to import this class
+-check by default if console not null;
+
+-step1: Get directory path from user
+console.readLine - get single line of text from the console and based on that String (dirPath)
+new File(dirPath) - pass this as parameter for creating new file object (called directory)
+
+-step2: List files in the directory
+if (directory.exists() && directory.isDirectory()) - check if created file ('directory') exist and it`s directory by fact;
+else we got - System.err.println("Invalid directory. Please check the path.");
+so we jump in this block assume the previous condition is true:
+
+* printing out the array of existing files - directory.listFiles();
+
+* -step3: Read from a specified file
+same operation as get directory, but we are now ready to get file for reading;
+so, console.readLine - get single line of text from the console and based on that String (readFileName)
+new File(directory, readFileName) - pass this as parameters for creating new file object (called readFile) and from current directory that file should be;
+parent abstract pathname(directory) is taken to denote a directory, and the child pathname(readFileName) string is taken to denote either a directory or a file;
+if condition : if (readFile.exists() && readFile.isFile()) - true we are open stream try-with-resources:
+come into play such classes:
+so, try (BufferedReader reader = new BufferedReader(new FileReader(readFile))){...}
+catch block work with IOException
+if condition is true for try we print content of the file inside that block:
+so,
+String line;
+System.out.println("Contents of the file:");
+while ((line = reader.readLine()) != null) {
+System.out.println(line);
+}
+but if file does not exist we have else case for if condition by step3:
+else { System.err.println("File does not exist."); }
+
+* -step4: Write to a new file
+here is come in action writing operation for existing file
+so, for newly created file with:
+String writeFileName = console.readLine("Enter a file name to write (it will be created/overwritten): "); //choose file to wrote in
+File writeFile = new File(directory, writeFileName); //file chosen
+we open try-with-resources:
+try (BufferedWriter writer = new BufferedWriter(new FileWriter(writeFile))) { //special class for writing in file
+     String content = console.readLine("Enter content to write to the file: "); //creating content to add into file
+     writer.write(content); //method for write with content as param
+     System.out.println("Content written to " + writeFileName);
+} catch (IOException e) {
+     System.err.println("Error writing to the file: " + e.getMessage()); //case of catching exception
+  }
+
+* -step5: Option to append content to the same file
+in case we want to append the content for the same file (condition if yes or not)
+case yes:
+once again try-with-resources construction is acting here as well:
+but PrintWriter class is used here
+try (PrintWriter printWriter = new PrintWriter(new BufferedWriter(new FileWriter(writeFile, true)))) {
+    String additionalContent = console.readLine("Enter additional content to append: "); //creating content to append
+    printWriter.println(additionalContent); //add content to the file
+    System.out.println("Additional content appended to " + writeFileName); just print file name that been updated
+} catch (IOException e) {
+    System.err.println("Error appending to the file: " + e.getMessage()); //case exception
+}
+
+-program will run again if:
+ java FileManager.java
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
